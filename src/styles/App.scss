@@ -1,130 +1,261 @@
-@import './variables';
+@import "./variables";
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, sans-serif;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+		Arial, sans-serif;
 }
 
 h1,
 h2 {
-  font-size: 24px;
-  margin: $spacing-xxs 0;
-  font-weight: 300;
+	font-size: 24px;
+	margin: $spacing-xxs 0;
+	font-weight: 300;
 }
 
 input {
-  font-size: 0.8rem;
-  border: none;
-  border-bottom: 1px solid $gray40;
-  padding: $spacing-xxs;
+	height: 60px;
+	font-size: 0.9rem;
+	border: none;
+	border-bottom: 1px solid $gray40;
+	padding: $spacing-xxs;
 }
 
 a {
-  cursor: pointer;
-  color: $blue-accent;
+	cursor: pointer;
+	color: $blue-accent;
 
-  &:hover {
-    color: $blue-dark;
-  }
+	&:hover {
+		color: $blue-dark;
+	}
 
-  h1 {
-    flex: 1;
-  }
+	h1 {
+		flex: 1;
+	}
+}
+
+button {
+	border: 0;
+	color: $blue-accent;
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: $blue-accent;
-  color: $white;
-  padding: $spacing-3xs $spacing-xs;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background-color: $blue-accent;
+	color: $white;
+	padding: $spacing-3xs $spacing-xs;
 
-  button {
-    padding: 0 $spacing-xs;
-  }
+	button {
+		padding: 0 $spacing-xs;
+	}
 }
 
 .header--content {
-  display: flex;
-  height: 10vh;
-  > * {
-    display: flex;
-    align-items: center;
-  }
+	display: flex;
+	height: 10vh;
+	> * {
+		display: flex;
+		align-items: center;
+	}
 }
 
 main {
-  padding: $spacing-xs $spacing-xxs;
-  min-width: 300px;
-  max-width: 100vw;
-  margin: 0 auto;
+	padding: $spacing-xs $spacing-xxs;
+	min-width: 100%;
+	max-width: 100vw;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+
+	@media (max-width: $media-min-width) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	article {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		max-width: 70vw;
+
+		@media (max-width: $media-min-width) {
+			max-width: 100vw;
+		}
+
+		.book-info {
+			display: flex;
+			flex-direction: column;
+			min-width: 80%;
+			padding: 0 $spacing-xxs;
+
+			@media (max-width: $media-min-width) {
+				min-width: 60%;
+				max-width: 60%;
+			}
+
+			span {
+				font-size: 10px;
+				margin-top: -5px;
+				margin-bottom: 2px;
+			}
+		}
+
+		strong {
+			white-space: pre;
+			overflow-wrap: break-word;
+			line-height: 30px;
+			line-break: auto;
+			width: 100%;
+			height: 30px;
+			overflow: auto;
+			text-overflow: ellipsis;
+			font-size: 14px;
+
+			@media (max-width: $media-min-width) {
+				font-size: 12px;
+			}
+		}
+	}
+
+	article.book-list-item:hover {
+		background-color: $gray01;
+	}
 }
 
 .reading-list-container {
-  padding: 0;
-  width: 400px;
-  height: 100vh;
+	padding: 0;
+	margin-left: $spacing-xs;
+	margin-right: $spacing-xs;
+	width: 26vw;
 
-  h2 {
-    position: relative;
-    color: $white;
-    background-color: $gray80;
-    margin: 0;
-    padding: 0.75rem;
-    text-align: center;
-  }
+	@media (max-width: $media-min-width) {
+		width: 100vw;
+		margin-left: 0;
+		margin-right: 0;
+		height: auto;
+		margin-top: $spacing-sm;
+	}
 
-  button {
-    position: absolute;
-    top: $spacing-xxs;
-    right: $spacing-xxs;
-    padding: 0;
-    min-width: 36px;
-  }
+	h2 {
+		color: $white;
+		background-color: $gray80;
+		margin: 0;
+		padding: $spacing-xs;
+		text-align: center;
+		margin-bottom: $spacing-3xs;
+	}
+
+	article {
+		display: flex;
+		justify-content: flex-start;
+		padding: $spacing-xxs 0;
+		max-width: 100%;
+		align-content: center;
+		padding: $spacing-3xs $spacing-xxs;
+
+		.wishlisted-info {
+			display: flex;
+			flex-direction: column;
+			height: 40px;
+			width: 85%;
+
+			span {
+				font-size: 10px;
+			}
+		}
+		h5 {
+			margin: 0;
+			white-space: pre;
+			overflow-wrap: break-word;
+			line-height: 20px;
+			line-break: auto;
+			max-width: 100%;
+			overflow: auto;
+			text-overflow: ellipsis;
+			font-size: 14px;
+		}
+	}
+
+	button {
+		height: 30px;
+		padding: 0;
+		margin-right: $spacing-xxs;
+		color: $crimson;
+		width: 30px;
+		border-radius: 15px;
+	}
+}
+
+.empty-wishlist {
+	padding-left: 10px;
 }
 
 .reading-list-content {
-  padding: $spacing-xxs;
+	padding: $spacing-xxs;
 }
 
 .empty {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh;
-  font-size: 1.5rem;
-  color: $gray40;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	min-height: 50vh;
+	font-size: 1.5rem;
+	color: $gray40;
 }
 
 form {
-  margin-bottom: $spacing-xs;
+	margin-bottom: $spacing-xs;
 }
 
 .full-width {
-  width: 100%;
+	width: 100%;
 }
 .book {
-  border: 1px solid silver;
-  margin-top: .5rem;
+	border: 1px solid silver;
+	margin-top: 0.5rem;
 }
 .book--container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content:space-around;
-  align-items: stretch;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	width: 70%;
+
+	@media (max-width: $media-min-width) {
+		width: 100%;
+	}
 }
 
 .search-params {
-  flex-grow: 3;
+	flex-grow: 3;
+	width: 100%;
 
+	article {
+		padding: 5px;
+
+		button {
+			width: 90px;
+			height: 40px;
+			border-radius: 65px;
+			font-size: 14px;
+			padding: 0;
+			cursor: pointer;
+		}
+
+		button[disabled],
+		button:disabled {
+			color: $gray10;
+			background-color: $gray30;
+			cursor: not-allowed;
+		}
+	}
 }
 .sidebar {
-  flex-grow: 1;
-
+	flex-grow: 1;
 }

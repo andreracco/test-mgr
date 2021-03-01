@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/App.scss';
 import BookSearch from './book-search/BookSearch';
+import { Provider as WishListProvider} from 'context/wishBooksContext';
 
 function App() {
   return (
@@ -10,10 +11,11 @@ function App() {
             <h1>My Good Reads</h1>
           </div>
         </header>
-        <main>
-          <BookSearch/>
-        </main>
-
+		<WishListProvider>
+			<main>
+				<BookSearch/>
+			</main>
+		</WishListProvider>
       </div>
   );
 }
